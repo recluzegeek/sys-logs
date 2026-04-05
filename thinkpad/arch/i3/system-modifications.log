@@ -1,0 +1,32 @@
+# enable the Network Manager for nm-applet to work on startup
+sudo systemctl enable NetworkManager
+sudo systemctl start Network Manager
+
+# start virt-manager to connect with qemu
+
+## enable and start libvirt
+sudo systemctl enable --now libvirtd
+
+## add your user to required groups
+sudo usermod -aG libvirt $(whoami)
+sudo usermod -aG kvm $(whoami)
+
+## start default network
+sudo virsh net-start default
+sudo virsh net-autostart default
+
+## enable clipboard sharing bw host and guest
+### in the guest vm
+sudo pacman -S spice-vdagent
+spice-vdagentd &
+
+### in the host vm
+sudo pacman -S spice-gtk spice-vdagent
+
+# brightness
+
+sudo pacman -S xorg-xrandr brightnessctl
+xrandr --output eDP-1 --gamma 1:0.8:0.7
+brightnessctl get
+brightnessctl set +10%
+brightnessctl set 10%-
