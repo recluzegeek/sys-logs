@@ -22,6 +22,7 @@ intel-media-driver
 intel-ucode
 iwd
 keepassxc
+less
 libpulse
 libva-intel-driver
 linux
@@ -43,8 +44,10 @@ refind
 smartmontools
 sof-firmware
 spice-vdagent
+stow
 sudo
 syncthing
+tree
 vim
 virt-manager
 vulkan-intel
