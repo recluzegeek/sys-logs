@@ -15,9 +15,9 @@ flameshot
 git
 gst-plugin-pipewire
 htop
-i3-wm
 i3blocks
 i3status
+i3-wm
 intel-media-driver
 intel-ucode
 iwd
@@ -29,8 +29,8 @@ linux
 linux-firmware
 micro
 nano
-network-manager-applet
 networkmanager
+network-manager-applet
 openssh
 pcmanfm
 picom
@@ -48,6 +48,8 @@ stow
 sudo
 syncthing
 tree
+ttf-nerd-fonts-symbols
+ttf-ubuntu-font-family
 vim
 virt-manager
 vulkan-intel

@@ -89,11 +89,9 @@ example:
 #!/bin/bash
 OUT="$HOME/sys-logs/thinkpad/arch/pkg-explicit.txt"
 pacman -Qqe | sort > "$OUT"
-
-make executable:
-chmod +x ~/.local/bin/export-pkgs
 ```
 
+- make executable: `chmod +x ~/.local/bin/export-pkgs`
 - hook: `/etc/pacman.d/hooks/export-packages.hook`
 
 [!IMPORTANT]
