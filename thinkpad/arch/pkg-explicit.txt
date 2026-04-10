@@ -1,9 +1,11 @@
 7zip
 alacritty
 base
+bash-completion
 bluez
 bluez-utils
 brightnessctl
+btop
 cherrytree
 clipmenu
 cosmic-greeter
@@ -33,12 +35,10 @@ networkmanager
 network-manager-applet
 openssh
 pcmanfm
-picom
 pipewire
 pipewire-alsa
 pipewire-jack
 pipewire-pulse
-power-profiles-daemon
 qemu-full
 refind
 smartmontools
@@ -47,6 +47,7 @@ spice-vdagent
 stow
 sudo
 syncthing
+tlp
 tree
 ttf-nerd-fonts-symbols
 ttf-ubuntu-font-family
@@ -58,6 +59,7 @@ wireless_tools
 wireplumber
 xdg-utils
 xorg-xinit
+xorg-xinput
 xorg-xrandr
 xsecurelock
 xterm
