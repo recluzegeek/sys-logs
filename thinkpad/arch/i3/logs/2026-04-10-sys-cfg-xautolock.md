@@ -8,22 +8,30 @@
 - running `dunst` and `xautolock` on X login, and is done via i3 config change.
 
 ## Command
+
+- packages
+
+```bash
 sudo pacman -S base-devel
 
 git clone https://aur.archlinux.org/xautolock.git
 cd xautolock
-mkpkg -si
+makepkg -si
 
-sudo pacman -S dunst libnotify
+sudo pacman -S dunst libnotify xorg-xset
+```
 
--- added this line in i3 config
+- i3 config
 
 ```diff
+--- a/home/msi/.config/i3/config
++++ b/home/msi/.config/i3/config
+
 + ## Start notification system
-+ exec_always --no-startup-id dunst
++ exec --no-startup-id dunst
 
 + ## autolocks via xsecurelock after 20 mins of inactivity, and suspend after 10 mins afterwards
-+ exec_always --no-startup-id xautolock -detectsleep -time 20 -corners -000 -locker "/usr/bin/xsecurelock auth_pam_x11 saver_blank" -killtime 10 -killer "systemctl suspend" -notify 20 -notifier "notify-send -- 'Locking screen in 20 seconds'"
++ exec --no-startup-id xautolock -detectsleep -time 20 -corners -000 -locker xsecurelock auth_pam_x11 saver_blank -killtime 10 -killer "systemctl suspend" -notify 20 -notifier "notify-send -- 'System will suspend in 10 minutes'"
 ```
 
 ## Output

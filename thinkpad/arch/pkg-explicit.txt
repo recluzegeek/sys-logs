@@ -66,6 +66,7 @@ xdg-utils
 xorg-xinit
 xorg-xinput
 xorg-xrandr
+xorg-xset
 xsecurelock
 xterm
 zed
