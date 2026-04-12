@@ -5,6 +5,7 @@
 - enabled contrib/non-free repos for additional packages (ubuntu-fonts)
 - installed JetBrainsMono nerd font for i3status
 - cloned dotfiles repo and applied via stow (minor tweaks for debian)
+- added APT hook to automatically track manually installed packages
 
 ## why
 
@@ -13,6 +14,7 @@
 - ensure consistent config via dotfiles
 - fix font/icons for status bar rendering
 - enable secure git auth via GCM
+- automatically track manually installed packages
 
 ## Command
 
@@ -66,6 +68,46 @@ export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/podman/podman.sock
 podman compose up
 ```
 
+* add apt hook, inside dotfiles repo and then copy them manually, not stow!
+
+```diff
+--- /home/msi/dotfiles/thinkpad/debian/scripts/usr/local/bin/update-package-list.sh
++++ /home/msi/dotfiles/thinkpad/debian/scripts/usr/local/bin/update-package-list.sh
+
++ #!/bin/bash
++ 
++ user='msi'
++ # Define the full path to ensure the directory exists
++ log_path="/home/$user/sys-logs/thinkpad/debian/i3"
++ 
++ # Create the directory if it doesn't exist
++ mkdir -p "$log_path"
++ 
++ # Re-export manually installed packages
++ aptitude search '~i !~M' -F '%p' | sed 's/ *$//' > "$log_path/packages.txt"
++ 
++ # Fix ownership
++ chown -R $user:$user "/home/$user/sys-logs"
+```
+
+* make it executable
+
+```bash
+sudo chmod +x /home/$user/dotfiles/thinkpad/debian/scripts/usr/local/bin/update-package-list.sh
+```
+
+* register the apt hook
+
+```diff
+--- /etc/apt/apt.conf.d/99-reexport-packages
++++ /etc/apt/apt.conf.d/99-reexport-packages
+
++ # /etc/apt/apt.conf.d/99-reexport-packages
++ # used for building packages list, via update-packages-list.sh
++
++ DPkg::Post-Invoke {"/usr/local/bin/update-package-list.sh";};
+```
+
 ## Output
 
 * apt update/install → OK
@@ -76,3 +118,4 @@ podman compose up
 * podman socket → active
 * docker-compose (podman backend) → not verified
 * vscode → installed
+* APT packaging hook → created and tested
