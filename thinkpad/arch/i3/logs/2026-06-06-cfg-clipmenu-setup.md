@@ -8,26 +8,21 @@ i3wm variables use literal string substitution and do not natively evaluate $HOM
 
 ## Command
 
---- a/arch/i3wm/.config/i3/config+++ b/arch/i3wm/.config/i3/config@@ -11,10 +11,12 @@
+```diff
+--- a/arch/i3wm/.config/i3/config
++++ b/arch/i3wm/.config/i3/config
+@@ -14,2 +14,4 @@ set $term alacritty
+ set $user msi
++# set directory for clipmenu
++set $clipmenu_dir "/home/msi/.cache/clipmenu"
 
-set $mod Mod4
-set $term alacritty-# set fonts for dmenu, and clipmenu-set $dmenu_fonts "Ubuntu Mono:pixelsize=16"
-
-# !!! Set the username here !!!
-
-set $user msi+# set fonts for dmenu, and clipmenu+set $dmenu_fonts "Ubuntu Mono:pixelsize=16"+# set directory for clipmenu+set $clipmenu_dir "/home/msi/.cache/clipmenu"
-
-# Font for window titles. Will also be used by the bar unless a different font
-
-# is used in the bar {} block below.@@ -42,8 +44,9 @@ bindsym $mod+shift+x exec xsecurelock
-
-# Clipboard history -> clipmenu
-
-# start the daemon if not already-exec --no-startup-id clipmenud-bindsym $mod+c exec clipmenu -fn $dmenu_fonts+exec --no-startup-id CM_DIR=$clipmenu_dir CM_SELECTIONS=clipboard clipmenud+# limit clipmenu to ctl+c, ignore mouse selection+bindsym $mod+c exec CM_DIR=$clipmenu_dir CM_SELECTIONS=clipboard clipmenu -fn $dmenu_fonts -i
-
-# NetworkManager is the most popular way to manage wireless networks on Linux,
-
-# and nm-applet is a desktop environment-independent system tray GUI for it.
+@@ -44,3 +46,4 @@ bindsym $mod+shift+x exec xsecurelock
+-exec --no-startup-id clipmenud
+-bindsym $mod+c exec clipmenu -fn $dmenu_fonts
++exec --no-startup-id CM_DIR=$clipmenu_dir CM_SELECTIONS=clipboard clipmenud
++# limit clipmenu to ctl+c, ignore mouse selection
++bindsym $mod+c exec CM_DIR=$clipmenu_dir CM_SELECTIONS=clipboard clipmenu -fn $dmenu_fonts -i
+```
 
 ## Output
 

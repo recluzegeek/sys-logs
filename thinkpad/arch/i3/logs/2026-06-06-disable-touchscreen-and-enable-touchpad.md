@@ -10,23 +10,32 @@
 
 ## Command
 
-# 1. To append tap-to-click automation to the window manager layout:
+```diff
+--- a/arch/i3wm/.config/i3/config
++++ b/arch/i3wm/.config/i3/config
+@@ -1,3 +1,6 @@
+ # i3 config file (v4)
 
-nano ~/.config/i3/config
+--- /dev/null
++++ b/etc/X11/xorg.conf.d/30-touchpad.conf
+@@ -0,0 +1,7 @@
++Section "InputClass"
++    Identifier "Synaptics Touchpad Tapping"
++    MatchIsTouchpad "on"
++    Driver "libinput"
++    Option "Tapping" "on"
++EndSection
 
-# 2. To create the global Xorg block rule for the touchscreen:
-
-sudo nano /etc/X11/xorg.conf.d/99-disable-touchscreen.conf
-
---- a/home/msi/.config/i3/config+++ b/home/msi/.config/i3/config@@ -1,3 +1,6 @@
-
-# i3 config file (v4)
-
-+# Automate Touchpad Tap-to-Click on boot+exec --no-startup-id xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Tapping Enabled" 1+
-
-# Put your remaining i3 configuration blocks below...
-
---- /dev/null+++ b/etc/X11/xorg.conf.d/99-disable-touchscreen.conf@@ -0,0 +1,7 @@+Section "InputClass"+ Identifier "Block Broken Touchscreen"+ MatchIsTouchscreen "on"+ Driver "libinput"+ Option "Ignore" "on"+EndSection
+--- /dev/null
++++ b/etc/X11/xorg.conf.d/99-disable-touchscreen.conf
+@@ -0,0 +1,7 @@
++Section "InputClass"
++    Identifier "Block Broken Touchscreen"
++    MatchIsTouchscreen "on"
++    Driver "libinput"
++    Option "Ignore" "on"
++EndSection
+```
 
 ## Output
 
