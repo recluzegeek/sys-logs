@@ -9,6 +9,7 @@ brightnessctl
 btop
 cherrytree
 clipmenu
+corepack
 cosmic-greeter
 dmenu
 dnsmasq
@@ -33,10 +34,13 @@ libva-intel-driver
 linux
 linux-firmware
 micro
+mpv
 nano
+ncdu
 networkmanager
 network-manager-applet
 openssh
+pavucontrol
 pcmanfm
 pipewire
 pipewire-alsa
@@ -70,4 +74,5 @@ xorg-xset
 xsecurelock
 xterm
 zed
+zola
 zram-generator
