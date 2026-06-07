@@ -57,6 +57,7 @@ sudo
 syncthing
 tlp
 tree
+ttf-iosevka-nerd
 ttf-nerd-fonts-symbols
 ttf-ubuntu-font-family
 vim
