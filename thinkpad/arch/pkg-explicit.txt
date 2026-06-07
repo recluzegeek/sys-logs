@@ -1,5 +1,4 @@
 7zip
-alacritty
 base
 base-devel
 bash-completion
@@ -39,6 +38,7 @@ nano
 ncdu
 networkmanager
 network-manager-applet
+noto-fonts-emoji
 openssh
 pavucontrol
 pcmanfm
@@ -51,6 +51,7 @@ refind
 smartmontools
 sof-firmware
 spice-vdagent
+starship
 stow
 sudo
 syncthing
@@ -61,6 +62,7 @@ ttf-ubuntu-font-family
 vim
 virt-manager
 vulkan-intel
+wezterm
 wget
 wireless_tools
 wireplumber
@@ -76,3 +78,4 @@ xterm
 zed
 zola
 zram-generator
+zsh
